@@ -1,0 +1,98 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+# ==========================================
+# Spring Boot, Maven & Gradle
+# ==========================================
+target/
+build/
+!.mvn/wrapper/maven-wrapper.jar
+!.**/src/main/**/target/
+!.**/src/test/**/target/
+!.**/src/main/**/build/
+!.**/src/test/**/build/
+
+# ==========================================
+# IDEs & Editors
+# ==========================================
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Eclipse / STS
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+# VS Code
+.vscode/
+
+# ==========================================
+# Docker & Kubernetes Artifacts
+# ==========================================
+# Ignore local docker-compose environment files
+.env
+
+# Ignore rendered or local Kubernetes manifest overrides
+*.local.yaml
+*.local.yml
+
+# ==========================================
+# System & Environment Files
+# ==========================================
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
+*.swp
+*.tmp
+*~
+
+# ==========================================
+# Secrets & Configuration Overrides
+# ==========================================
+# Never commit credentials or local passwords
+*.env
+*.secret
+*.secrets
+secrets.yml
+secrets.yaml
+application-secret.properties
+application-secret.yml
