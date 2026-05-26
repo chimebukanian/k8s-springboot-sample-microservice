@@ -21,9 +21,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleResourceNotFound(
             ResourceNotFoundException ex,
             WebRequest request) {
-
+        
         log.error("Resource not found: {}", ex.getMessage());
-
+        
         ErrorResponse errorResponse = ErrorResponse.builder()
                 .status(HttpStatus.NOT_FOUND.value())
                 .message(ex.getMessage())
@@ -31,7 +31,7 @@ public class GlobalExceptionHandler {
                 .timestamp(LocalDateTime.now())
                 .path(request.getDescription(false).replace("uri=", ""))
                 .build();
-
+        
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
@@ -39,16 +39,16 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleValidationException(
             MethodArgumentNotValidException ex,
             WebRequest request) {
-
+        
         log.error("Validation error: {}", ex.getMessage());
-
+        
         Map<String, String> errors = new HashMap<>();
         ex.getBindingResult().getAllErrors().forEach((error) -> {
             String fieldName = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
-
+        
         ErrorResponse errorResponse = ErrorResponse.builder()
                 .status(HttpStatus.BAD_REQUEST.value())
                 .message("Validation failed: " + errors.toString())
@@ -56,7 +56,7 @@ public class GlobalExceptionHandler {
                 .timestamp(LocalDateTime.now())
                 .path(request.getDescription(false).replace("uri=", ""))
                 .build();
-
+        
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
@@ -64,9 +64,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleGlobalException(
             Exception ex,
             WebRequest request) {
-
+        
         log.error("Unexpected error: ", ex);
-
+        
         ErrorResponse errorResponse = ErrorResponse.builder()
                 .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .message("An unexpected error occurred")
@@ -74,7 +74,7 @@ public class GlobalExceptionHandler {
                 .timestamp(LocalDateTime.now())
                 .path(request.getDescription(false).replace("uri=", ""))
                 .build();
-
+        
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
